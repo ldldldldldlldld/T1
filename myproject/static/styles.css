@@ -1,136 +1,179 @@
 /* Общие стили */
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f1f1f1;
+* {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
-/* Окно чата */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f7fc;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.chat-container-wrapper {
+    width: 100%;
+    max-width: 480px;
+    margin: 0 auto;
+    padding: 10px;
+}
+
 .chat-container {
-    width: 400px;
-    height: 500px;
-    background-color: #fff;
+    background-color: #ffffff;
     border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
+    height: 100%;
 }
 
-/* Заголовок чата */
 .chat-header {
-    background-color: #2b98f0;
-    color: #fff;
-    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    padding: 15px;
+    border-radius: 10px 10px 0 0;
     display: flex;
     align-items: center;
-    border-radius: 10px 10px 0 0;
 }
 
-.chat-header img {
+.chat-avatar {
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
     margin-right: 10px;
 }
 
-.chat-header span {
+#bot-name {
     font-size: 18px;
     font-weight: bold;
 }
 
-/* Чат окно для сообщений */
 .chat-box {
-    flex: 1;
-    padding: 10px;
+    padding: 15px;
+    flex-grow: 1;
     overflow-y: auto;
-    background-color: #e7f1ff;
-    border-radius: 0 0 10px 10px;
-    overflow-y: auto;  /* Разрешаем вертикальную прокрутку */
-    overflow-x: hidden;  /* Отключение прокрутки */
-    word-wrap: break-word;
+    max-height: 400px;
+    margin-bottom: 10px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
 }
 
 .message {
-    padding: 10px;
     margin-bottom: 10px;
-    border-radius: 10px;
-    max-width: 70%;
-    clear: both;
+    padding: 10px;
+    border-radius: 8px;
 }
 
 .user-message {
-    background-color: #c9f7d5;
-    align-self: flex-end;
+    background-color: #d1e7dd;
+    margin-left: 50px;
+    max-width: 75%;
     position: relative;
-    float: right;
-}
-
-.user-message::after {
-    content: '';
-    position: absolute;
-    right: -15px;
-    top: 50%;
-    border: 8px solid transparent;
-    border-left-color: #c9f7d5;
-    transform: translateY(-50%);
 }
 
 .bot-message {
-    background-color: #d4e6f1;
-    align-self: flex-start;
+    background-color: #f8d7da;
+    margin-right: 50px;
+    max-width: 75%;
     position: relative;
 }
 
-.bot-message::after {
-    content: '';
-    position: absolute;
-    left: -15px;
-    top: 50%;
-    border: 8px solid transparent;
-    border-right-color: #d4e6f1;
-    transform: translateY(-50%);
+.message p {
+    font-size: 14px;
+    margin: 0;
 }
 
-/* Поле ввода и кнопка */
+.message strong {
+    font-weight: bold;
+}
+
 .chat-footer {
     padding: 10px;
     display: flex;
-    flex-direction: column;
-    background-color: #fff;
-    border-top: 1px solid #ddd;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid #eee;
+    background-color: #f8f9fa;
+    border-radius: 0 0 10px 10px;
+}
+
+.submit-btn {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.submit-btn:hover {
+    background-color: #45a049;
+}
+
+.form-group {
+    flex-grow: 1;
+    display: flex;
+    justify-content: space-between;
 }
 
 textarea {
-    width: 90%;
+    width: 100%;
     padding: 10px;
+    font-size: 14px;
     border: 1px solid #ddd;
     border-radius: 5px;
-    margin-bottom: 10px;
-    resize: none;
+    margin-right: 10px;
 }
 
-button {
-    background-color: #2b98f0;
+textarea:focus {
+    outline: none;
+    border-color: #4CAF50;
+}
+
+input[type="file"] {
+    margin-top: 10px;
+}
+
+input[type="file"]:hover {
+    cursor: pointer;
+}
+.settings-container {
+    background-color: #f4f7fc;
+    padding: 15px;
+    margin-top: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.settings-container label {
+    display: block;
+    margin-top: 10px;
+}
+
+.settings-container input {
+    width: 100%;
+    padding: 5px;
+    margin-top: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.settings-container button {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #4CAF50;
     color: white;
     border: none;
-    padding: 10px;
     border-radius: 5px;
     cursor: pointer;
 }
 
-button:hover {
-    background-color: #2192d6;
-}
-
-/* Настройки цветов */
-#color-picker {
-    margin-top: 10px;
-}
-
-#color-picker label {
-    display: block;
-    margin-bottom: 5px;
-}
-
-#color-picker input {
-    margin-bottom: 15px;
+.settings-container button:hover {
+    background-color: #45a049;
 }

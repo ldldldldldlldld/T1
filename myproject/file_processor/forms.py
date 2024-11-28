@@ -1,4 +1,13 @@
 from django import forms
 
 class ChatForm(forms.Form):
-    user_message = forms.CharField(widget=forms.Textarea, required=True, label="Ваш вопрос")
+    model_choice = forms.ChoiceField(
+        choices=[
+            ('openai', 'OpenAI'),
+            ('distilbert', 'DistilBERT'),
+            ('bloom', 'Bloom'),
+        ],
+        label="Выберите модель",
+        required=True
+    )
+    user_message = forms.CharField(label="Сообщение", required=False, widget=forms.Textarea)

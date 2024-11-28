@@ -4,19 +4,42 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Чат с GPT</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
-    <h1>Чат с GPT</h1>
+    <div class="chat-container-wrapper">
+        <div class="chat-container">
+            <div class="chat-header">
+                <img id="chat-avatar" src="https://via.placeholder.com/40" alt="avatar" class="chat-avatar">
+                <span id="bot-name">GPT Chat</span>
+            </div>
+            <div id="chatbox" class="chat-box">
+                <!-- Сообщения чата -->
+                {% if user_message %}
+                    <div class="message user-message">
+                        <p><strong>Вы:</strong> {{ user_message }}</p>
+                    </div>
+                {% endif %}
+                {% if ai_response %}
+                    <div class="message bot-message">
+                        <p><strong>GPT:</strong> {{ ai_response }}</p>
+                    </div>
+                {% endif %}
+            </div>
+            <div class="chat-footer">
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        {{ form.as_p }}
+                    </div>
+                    <button type="submit" class="submit-btn">Отправить</button>
+                </form>
+            </div>
+        </div>
+    </div>
 
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Отправить</button>
-    </form>
-
-    {% if ai_response %}
-        <h2>Ответ AI:</h2>
-        <p>{{ ai_response }}</p>
-    {% endif %}
+    <script src="{% static 'preview.js' %}"></script>
 </body>
 </html>
