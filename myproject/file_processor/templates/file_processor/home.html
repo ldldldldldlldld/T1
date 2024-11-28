@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <h1>Welcome to the File Processor</h1>
+    <a href="{% url 'upload_file' %}">Upload a File</a>
+
+    <h1>Ответы на вопросы</h1>
+    <ul>
+        {% for item in ai_responses %}
+            <li>
+                <strong>Вопрос:</strong> {{ item.question }}<br>
+                <strong>Ответ:</strong> {{ item.answer }}
+            </li>
+        {% endfor %}
+    </ul>
+
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Загрузить</button>
+    </form>
+
+    <!-- Chat UI -->
+    <div class="chat-container">
+        <div class="chat-header">
+            <img src="https://via.placeholder.com/40" alt="avatar" class="chat-avatar">
+            <span>WowChat</span>
+        </div>
+        <div id="chatbox" class="chat-box">
+            <!-- Сообщения будут вставляться сюда -->
+        </div>
+        <div class="chat-footer">
+            <textarea id="user_message" placeholder="Введите ваш вопрос..." rows="2"></textarea>
+            <button id="send_button">Отправить</button>
+        </div>
+    </div>
+
+    <div id="color-picker">
+        <label for="chat-background">Цвет фона чата:</label>
+        <input type="color" id="chat-background" name="chat-background" value="#f4f4f4">
+
+        <label for="user-message-bg">Цвет фона сообщений пользователя:</label>
+        <input type="color" id="user-message-bg" name="user-message-bg" value="#e1f7d5">
+
+        <label for="bot-message-bg">Цвет фона сообщений бота:</label>
+        <input type="color" id="bot-message-bg" name="bot-message-bg" value="#d5e1f7">
+    </div>
+    <button type="button" id="generate-script-button">Получить код для вставки</button>
+    <button type="button" id="save-script-button">Сохранить код</button>
+    <button id="copy-code-button">Копировать код</button>
+    <h3>Сгенерированный код для вставки:</h3>
+    <textarea id="generated-script" rows="10" cols="50" readonly></textarea>
+
+    <script src="{% static 'preview.js' %}"></script>
+</body>
+</html>

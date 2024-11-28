@@ -1,0 +1,9 @@
+<h1>Ответы на вопросы</h1>
+<ul>
+    {% for item in ai_responses %}
+        <li>
+            <strong>Вопрос:</strong> {{ item.question }}<br>
+            <strong>Ответ:</strong> {{ item.answer }}
+        </li>
+    {% endfor %}
+</ul>

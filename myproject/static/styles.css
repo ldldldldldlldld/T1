@@ -1,0 +1,136 @@
+/* Общие стили */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f1f1f1;
+    margin: 0;
+    padding: 0;
+}
+
+/* Окно чата */
+.chat-container {
+    width: 400px;
+    height: 500px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+}
+
+/* Заголовок чата */
+.chat-header {
+    background-color: #2b98f0;
+    color: #fff;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    border-radius: 10px 10px 0 0;
+}
+
+.chat-header img {
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.chat-header span {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* Чат окно для сообщений */
+.chat-box {
+    flex: 1;
+    padding: 10px;
+    overflow-y: auto;
+    background-color: #e7f1ff;
+    border-radius: 0 0 10px 10px;
+    overflow-y: auto;  /* Разрешаем вертикальную прокрутку */
+    overflow-x: hidden;  /* Отключение прокрутки */
+    word-wrap: break-word;
+}
+
+.message {
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    max-width: 70%;
+    clear: both;
+}
+
+.user-message {
+    background-color: #c9f7d5;
+    align-self: flex-end;
+    position: relative;
+    float: right;
+}
+
+.user-message::after {
+    content: '';
+    position: absolute;
+    right: -15px;
+    top: 50%;
+    border: 8px solid transparent;
+    border-left-color: #c9f7d5;
+    transform: translateY(-50%);
+}
+
+.bot-message {
+    background-color: #d4e6f1;
+    align-self: flex-start;
+    position: relative;
+}
+
+.bot-message::after {
+    content: '';
+    position: absolute;
+    left: -15px;
+    top: 50%;
+    border: 8px solid transparent;
+    border-right-color: #d4e6f1;
+    transform: translateY(-50%);
+}
+
+/* Поле ввода и кнопка */
+.chat-footer {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    border-top: 1px solid #ddd;
+}
+
+textarea {
+    width: 90%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    resize: none;
+}
+
+button {
+    background-color: #2b98f0;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #2192d6;
+}
+
+/* Настройки цветов */
+#color-picker {
+    margin-top: 10px;
+}
+
+#color-picker label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+#color-picker input {
+    margin-bottom: 15px;
+}
